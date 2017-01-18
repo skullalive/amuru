@@ -9,7 +9,7 @@ class ReceiverRecording(object):
     
     def record(self, request:Command, implementation:Callable[[], Request]) -> None:
         key = request.__name__
-        self._recording[key].append(implementation)
+        self._recording[key] = implementation
     
     def resolve(self, request_object:Command) -> Callable[[], Request]:
         key = request_object.__class__.__name__
