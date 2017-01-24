@@ -1,0 +1,14 @@
+// Placez vos paramètres dans ce fichier pour remplacer les paramètres par défaut et les paramètres utilisateur.
+{
+    "python.pythonPath": "your python path here",
+    "python.linting.pylintEnabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "--disable=W5101",
+        "--disable=C0111"
+    ],
+    "python.unitTest.nosetestsEnabled": true,
+    "python.unitTest.pyTestEnabled": false,
+    "python.unitTest.unittestEnabled": false
+}
