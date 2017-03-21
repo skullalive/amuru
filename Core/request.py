@@ -12,3 +12,7 @@ class Request(metaclass=ABCMeta):
     def id(self) -> UUID:
         return self._requestid
     
+    @staticmethod
+    def is_aCommand() -> bool:
+        return False
+    
