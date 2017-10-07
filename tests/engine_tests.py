@@ -1,7 +1,5 @@
 from unittest import TestCase
-from Core.command import Command
 from Core.engine import CommandEngine
-from Core.receiver import Receiver
 from Core.recording import ReceiverRecording
 from tests.engine_tests_data import MyTestCommand, MyTestHandler, MyTestHandlerWithLog
 

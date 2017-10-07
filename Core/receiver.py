@@ -4,5 +4,5 @@ from Core.request import Request
 class Receiver(metaclass=ABCMeta):
 
     @abstractmethod
-    def execute(self, request:Request) -> None:
+    def execute(self, request:Request) -> Request:
         pass
