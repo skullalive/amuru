@@ -9,7 +9,7 @@ class ReceiverRecording(object):
     def __init__(self) -> None:
         self._recording = {}
 
-    def record(self, request: Command, implementation: Callable[[], Receiver]) -> None:
+    def record(self, request:Command, implementation:Callable[[], Receiver]) -> None:
         key = request.__name__
         if request.is_aCommand() and key in self._recording.keys():
             raise RecordingException("this command with the same name already exist")

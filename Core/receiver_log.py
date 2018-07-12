@@ -25,7 +25,6 @@ def receiver_log(level=logging.DEBUG, output_mode: OutputType = 1, log_name: str
             req = args[1]
             if not isinstance(req, Request):
                 raise ConfigException("Request not found")
-
             request_name = " {}".format(str(req))
             if output_mode == 2:
                 handler = logging.FileHandler('amuru.log')
@@ -33,11 +32,13 @@ def receiver_log(level=logging.DEBUG, output_mode: OutputType = 1, log_name: str
                 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
                 handler.setFormatter(formatter)
                 log.addHandler(handler)
-
             log.log(level, start_log_msg + request_name)
-            result = func(*args, **kwargs)
+            try:
+                result = func(*args, **kwargs)
+            except Exception as e:
+                log.exception(e)
+                raise e
             log.log(level, end_log_msg + request_name)
-
             return result
 
         return func_wrapper
