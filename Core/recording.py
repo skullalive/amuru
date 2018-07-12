@@ -2,7 +2,7 @@ from typing import Callable
 from Core.receiver import Receiver
 from Core.request import Request
 from Core.command import Command
-from Core.exceptions import EngineException
+from Core.exceptions import RecordingException
 
 
 class ReceiverRecording(object):
