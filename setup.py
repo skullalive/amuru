@@ -22,7 +22,6 @@ setup(
         "Intended Audience :: Developers",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Topic :: System :: Monitoring",
         "Topic :: System :: Distributed Computing",
     ]
 )

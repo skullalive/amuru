@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Callable, List
 from Core.receiver import Receiver
 from Core.request import Request
 from Core.command import Command
@@ -12,10 +12,11 @@ class ReceiverRecording(object):
     def record(self, request:Command, implementation:Callable[[], Receiver]) -> None:
         key = request.__name__
         if request.is_aCommand() and key in self._recording.keys():
-            raise RecordingException("this command with the same name already exist")
-        self._recording[key] = implementation
+            self._recording[key].append(implementation)
+        else:
+            self._recording[key] = [implementation]
 
-    def resolve(self, request_object: Command) -> Callable[[], Receiver]:
+    def resolve(self, request_object: Command) -> List[Callable[[], Receiver]]:
         key = request_object.__class__.__name__
         if key not in self._recording.keys():
             raise RecordingException("no receiver found for this command")

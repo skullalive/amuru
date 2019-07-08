@@ -11,6 +11,7 @@ class CommandEngine(object):
     def process(self, my_command: Command) -> None:
         if not self._receiver_factory:
             raise EngineException("no factory found")
-        receiver = self._receiver_factory.resolve(my_command)
-        receiver_object = receiver()
-        receiver_object.execute(my_command)
+        receivers = self._receiver_factory.resolve(my_command)
+        for receiver in receivers:
+            receiver_object = receiver()
+            receiver_object.execute(my_command)
