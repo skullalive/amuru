@@ -1,8 +1,8 @@
 from typing import Callable, List
-from Core.receiver import Receiver
-from Core.request import Request
-from Core.command import Command
-from Core.exceptions import RecordingException
+from amurucore.receiver import Receiver
+from amurucore.request import Request
+from amurucore.command import Command
+from amurucore.exceptions import RecordingException
 
 
 class ReceiverRecording(object):

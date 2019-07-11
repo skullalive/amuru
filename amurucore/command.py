@@ -1,4 +1,4 @@
-from Core.request import Request
+from amurucore.request import Request
 
 
 class Command(Request):

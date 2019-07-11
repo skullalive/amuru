@@ -1,7 +1,7 @@
 from functools import wraps
 import logging
-from Core.request import Request
-from Core.exceptions import ConfigException
+from amurucore.request import Request
+from amurucore.exceptions import ConfigException
 from enum import Enum
 
 DEFAULTSTARTMSG = "Starting operation {}"

@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from Core.request import Request
+from amurucore.request import Request
 
 class Receiver(metaclass=ABCMeta):
 

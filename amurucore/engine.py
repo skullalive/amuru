@@ -1,7 +1,7 @@
 from typing import Optional
-from Core.command import Command
-from Core.recording import ReceiverRecording
-from Core.exceptions import EngineException
+from amurucore.command import Command
+from amurucore.recording import ReceiverRecording
+from amurucore.exceptions import EngineException
 
 
 class CommandEngine(object):

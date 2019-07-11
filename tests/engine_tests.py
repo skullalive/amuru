@@ -1,6 +1,6 @@
 from unittest import TestCase
-from Core.engine import CommandEngine
-from Core.recording import ReceiverRecording
+from amurucore.engine import CommandEngine
+from amurucore.recording import ReceiverRecording
 from tests.engine_tests_data import MyTestCommand, MyTestHandler, MyTestHandlerWithLog
 
 
