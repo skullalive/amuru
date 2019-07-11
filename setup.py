@@ -11,7 +11,7 @@ setup(
     author_email='thynquest@gmail.com',
     url='https://github.com/thynquest/amuru.git',
 
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests', 'tests.*']),
     install_requires=['ez_setup'],
         
     classifiers=[

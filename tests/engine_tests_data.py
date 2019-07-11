@@ -1,8 +1,8 @@
 import logging
-from Core.command import Command
-from Core.receiver import Receiver
-from Core.request import Request
-from Core.receiver_log import receiver_log, OutputType
+from amurucore.command import Command
+from amurucore.receiver import Receiver
+from amurucore.request import Request
+from amurucore.receiver_log import receiver_log, OutputType
 
 
 class MyTestHandler(Receiver):
