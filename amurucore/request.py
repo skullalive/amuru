@@ -13,4 +13,9 @@ class Request(metaclass=ABCMeta):
     @staticmethod
     @abstractmethod
     def is_aCommand() -> bool:
-        return False
+       pass
+    
+    @staticmethod
+    @abstractmethod
+    def is_aQuery() -> bool:
+        pass

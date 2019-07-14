@@ -11,10 +11,16 @@ class ReceiverRecording(object):
 
     def record(self, request:Command, implementation:Callable[[], Receiver]) -> None:
         key = request.__name__
-        if request.is_aCommand() and key in self._recording.keys():
-            self._recording[key].append(implementation)
+        if request.is_aCommand():
+            if key in self._recording.keys():
+                self._recording[key].append(implementation)
+            else:
+                self._recording[key] = [implementation]
         else:
-            self._recording[key] = [implementation]
+            if key in self._recording.keys():
+                raise RecordingException("Query already exists")
+            self._recording[key] = implementation
+
 
     def resolve(self, request_object: Command) -> List[Callable[[], Receiver]]:
         key = request_object.__class__.__name__

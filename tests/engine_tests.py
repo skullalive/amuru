@@ -1,13 +1,13 @@
-from unittest import TestCase
-from amurucore.engine import CommandEngine
+import unittest
+from amurucore.engine import CommandEngine, QueryEngine
 from amurucore.recording import ReceiverRecording
-from tests.engine_tests_data import MyTestCommand, MyTestHandler, MyTestHandlerWithLog
+from tests.engine_tests_data import MyTestCommand, MyTestQuery, MyTestQueryReceiver, MyTestHandler, MyTestHandlerWithLog
 
 
-class EngineFixture(TestCase):
+class EngineFixture(unittest.TestCase):
     def setUp(self):
         self._subscriber = ReceiverRecording()
-
+        
     def test_execute(self):
         command = MyTestCommand()
         receiver = MyTestHandler()
@@ -23,3 +23,14 @@ class EngineFixture(TestCase):
         self._command_engine = CommandEngine(self._subscriber)
         self._command_engine.process(command)
         self.assertEqual(receiver_log._mvalue, "modified log value")
+    
+    def test_query(self):
+        query = MyTestQuery()
+        receiver = MyTestQueryReceiver()
+        self._subscriber.record(MyTestQuery, lambda: receiver)
+        self._query_engine = QueryEngine(self._subscriber)
+        result = self._query_engine.fetch(query)
+        self.assertEqual(result, "this is the returned value")
+    
+    if __name__ == '__main__':
+        unittest.main()

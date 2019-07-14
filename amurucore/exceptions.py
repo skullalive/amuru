@@ -3,7 +3,6 @@
 class RecordingException(Exception):
     pass
 
-
 class EngineException(Exception):
     pass
 
