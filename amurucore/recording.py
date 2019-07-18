@@ -7,24 +7,27 @@ from amurucore.exceptions import RecordingException
 
 class ReceiverRecording(object):
     def __init__(self) -> None:
-        self._recording = {}
+        self.__recording = {}
 
-    def record(self, request:Command, implementation:Callable[[], Receiver]) -> None:
+    def record(self, request:Request, implementation:Callable[[], Receiver]) -> None:
         key = request.__name__
         if request.is_aCommand():
-            if key in self._recording.keys():
-                self._recording[key].append(implementation)
+            if key in self.__recording.keys():
+                self.__recording[key].append(implementation)
             else:
-                self._recording[key] = [implementation]
+                self.__recording[key] = [implementation]
         else:
-            if key in self._recording.keys():
+            if key in self.__recording.keys():
                 raise RecordingException("Query already exists")
-            self._recording[key] = implementation
+            self.__recording[key] = implementation
 
 
-    def resolve(self, request_object: Command) -> List[Callable[[], Receiver]]:
+    def resolve(self, request_object: Request) -> List[Callable[[], Receiver]]:
         key = request_object.__class__.__name__
-        if key not in self._recording.keys():
-            raise RecordingException("no receiver found for this command")
+        if key not in self.__recording.keys():
+            raise RecordingException("no receiver found for this request")
 
-        return self._recording[key]
+        return self.__recording[key]
+    
+    def clear(self):
+        self.__recording.clear()

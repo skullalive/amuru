@@ -1,7 +1,7 @@
 import logging
 from amurucore.query import Query
 from amurucore.command import Command
-from amurucore.receiver import Receiver, QueryReceiver
+from amurucore.receiver import Receiver
 from amurucore.request import Request
 from amurucore.receiver_log import receiver_log, OutputType
 
@@ -23,7 +23,7 @@ class MyTestHandlerWithLog(Receiver):
         self._mvalue = "modified log value"
 
 
-class MyTestQueryReceiver(QueryReceiver):
+class MyTestQueryReceiver(Receiver):
     def __init__(self):
         pass
 

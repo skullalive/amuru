@@ -2,3 +2,4 @@
 \.vscode/
 dist/
 Amuru.egg-info/
+__pycache__/
