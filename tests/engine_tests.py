@@ -1,7 +1,7 @@
 import unittest
 from amurucore.engine import CommandEngine, QueryEngine
 from amurucore.recording import ReceiverRecording
-from tests.engine_tests_data import MyTestCommand, MyTestQuery, MyTestQueryReceiver, MyTestHandler, MyTestHandlerWithLog
+from tests.engine_tests_data import MyTestCommand, MyTestQuery, MyTestQueryWithData, MyTestQueryReceiver, MyTestQueryReceiverWithData, MyTestHandler, MyTestHandlerWithLog
 
 
 class EngineFixture(unittest.TestCase):
@@ -31,6 +31,14 @@ class EngineFixture(unittest.TestCase):
         self._query_engine = QueryEngine(self._subscriber)
         result = self._query_engine.fetch(query)
         self.assertEqual(result, "this is the returned value")
+
+    def test_query_with_data(self):
+        query = MyTestQueryWithData()
+        receiver = MyTestQueryReceiverWithData()
+        self._subscriber.record(MyTestQueryWithData, lambda: receiver)
+        self._query_engine = QueryEngine(self._subscriber)
+        result = self._query_engine.fetch(query)
+        self.assertEqual(result, "myAPropertyValue")
     
     if __name__ == '__main__':
         unittest.main()

@@ -31,9 +31,27 @@ class MyTestQueryReceiver(Receiver):
         return "this is the returned value"
 
 
+class MyTestQueryReceiverWithData(Receiver):
+    def __init__(self):
+        pass
+
+    def execute(self, request: Request):
+        return request.propA
+
 class MyTestQuery(Query):
     def __init__(self):
         super().__init__()
+
+
+class MyTestQueryWithData(Query):
+    def __init__(self):
+        self.__propA = "myAPropertyValue"
+    
+    @property
+    def propA(self):
+        return self.__propA
+
+    
 
 
 class MyTestCommand(Command):
