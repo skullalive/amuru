@@ -3,3 +3,5 @@
 dist/
 Amuru.egg-info/
 __pycache__/
+amurucore/__pycache__/recording.cpython-35.pyc
+tests/__pycache__/engine_tests_data.cpython-35.pyc

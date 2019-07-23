@@ -46,6 +46,7 @@ class MyTestQuery(Query):
 class MyTestQueryWithData(Query):
     def __init__(self):
         self.__propA = "myAPropertyValue"
+        super().__init__()
     
     @property
     def propA(self):
