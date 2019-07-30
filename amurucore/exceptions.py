@@ -8,3 +8,6 @@ class EngineException(Exception):
 
 class ConfigException(Exception):
     pass
+
+class HandlerException(Exception):
+    pass

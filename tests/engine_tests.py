@@ -1,15 +1,17 @@
 import unittest
 from amurucore.engine import CommandEngine, QueryEngine
-from amurucore.recording import ReceiverRecording
+from amurucore.recording import Recording
+from amurucore.command import CommandOperator
 from tests.engine_tests_data import MyTestCommand, MyTestQuery, MyTestQueryWithData, MyTestQueryReceiver, MyTestQueryReceiverWithData, MyTestHandler, MyTestHandlerWithLog
 
 
 class EngineFixture(unittest.TestCase):
     def setUp(self):
-        self._subscriber = ReceiverRecording()
+        self._subscriber = Recording()
         
     def test_execute(self):
         command = MyTestCommand()
+        command.operation_type = CommandOperator.update
         receiver = MyTestHandler()
         self._subscriber.record(MyTestCommand, lambda: receiver)
         self._command_engine = CommandEngine(self._subscriber)
@@ -18,6 +20,7 @@ class EngineFixture(unittest.TestCase):
 
     def test_executeWithLogging(self):
         command = MyTestCommand()
+        command.operation_type = CommandOperator.update
         receiver_log = MyTestHandlerWithLog()
         self._subscriber.record(MyTestCommand, lambda: receiver_log)
         self._command_engine = CommandEngine(self._subscriber)

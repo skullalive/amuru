@@ -2,24 +2,25 @@ import logging
 from amurucore.query import Query
 from amurucore.command import Command
 from amurucore.receiver import Receiver
+from amurucore.handler import UpdateHandler, CreateHandler
 from amurucore.request import Request
 from amurucore.receiver_log import receiver_log, OutputType
 
 
-class MyTestHandler(Receiver):
+class MyTestHandler(UpdateHandler):
     def __init__(self):
         self._mvalue = "base value"
-
-    def execute(self, request: Request):
+            
+    def update(self, request:Command):
         self._mvalue = "modified value"
 
 
-class MyTestHandlerWithLog(Receiver):
+class MyTestHandlerWithLog(UpdateHandler):
     def __init__(self):
         self._mvalue = "base log value"
 
     @receiver_log(logging.DEBUG, OutputType.file_output)
-    def execute(self, request: Request):
+    def update(self, request: Request):
         self._mvalue = "modified log value"
 
 
@@ -51,9 +52,6 @@ class MyTestQueryWithData(Query):
     @property
     def propA(self):
         return self.__propA
-
-    
-
 
 class MyTestCommand(Command):
     def __init__(self):
