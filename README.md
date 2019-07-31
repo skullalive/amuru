@@ -1,4 +1,4 @@
-#Amuru
+# Amuru
 ===========================
 
 [![Build Status](https://travis-ci.org/thynquest/amuru.svg?branch=master)](https://travis-ci.org/thynquest/amuru)
