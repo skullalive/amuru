@@ -1,7 +1,7 @@
 #Amuru
 ===========================
 
-https://travis-ci.org/thynquest/amuru#
+[![Build Status](https://travis-ci.org/thynquest/amuru.svg?branch=master)](https://travis-ci.org/thynquest/amuru)
 
 Amuru is a tiny command invoker/dispatcher pattern library. for now it is in it's alpha version but his goal is to work
 with any python application (django etc) where there is a need to drive a client command operation, that send a command over a treatment process.
