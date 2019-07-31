@@ -2,7 +2,7 @@ import unittest
 from amurucore.engine import CommandEngine, QueryEngine
 from amurucore.recording import Recording
 from amurucore.command import CommandOperator
-from tests.engine_tests_data import MyTestCommand, MyTestQuery, MyTestQueryWithData, MyTestQueryReceiver, MyTestQueryReceiverWithData, MyTestHandler, MyTestHandlerWithLog
+from tests.test_engine_data import MyTestCommand, MyTestQuery, MyTestQueryWithData, MyTestQueryReceiver, MyTestQueryReceiverWithData, MyTestHandler, MyTestHandlerWithLog
 
 
 class EngineFixture(unittest.TestCase):
